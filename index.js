@@ -1,14 +1,18 @@
 const express = require("express");
 const connectDb = require("./config/connectToDb");
-require('dotenv').config();
+const cors = require("cors");
 
+require('dotenv').config();
 
 connectDb();
 
-app = express();
+const app = express();
 
+app.use(cors()); 
+app.use(express.json());
 
-app.listen(process.env.PORT,()=>{
-console.log(`Server Listening on Port ${process.env.PORT}`);
-})
+app.use("/api/auth", require('./routes/AuthRoute'));
 
+app.listen(process.env.PORT, () => {
+  console.log(`Server Listening on Port ${process.env.PORT}`);
+});
