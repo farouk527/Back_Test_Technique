@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema ({
 {timestamps:true}
 )
 UserSchema.methods.generateAuthToken = function ()  {
-    return jwt.sign({id : this._id , isAdmin : this.isAdmin},process.env.JWT_SECRET)
+    return jwt.sign({id : this._id},process.env.JWT_SECRET)
      }
 
 function validateRegisterUser(obj) {
