@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", require('./routes/AuthRoute'));
+app.use("/api/post", require('./routes/PostRoute'));
 
 app.listen(process.env.PORT, () => {
   console.log(`Server Listening on Port ${process.env.PORT}`);
